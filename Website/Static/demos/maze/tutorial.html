@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Genetic ML</title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/index.html">GeneticML</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/info.html">Information</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/demos/demos.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Demos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/demos/demos.html">Demos:</a>
+              <a class="dropdown-item" href="/demos/6_bits/6bits.html">6-bits</a>
+              <a class="dropdown-item" href="/demos/maze/maze.html">Maze</a>
+              
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/links.html">Further Reading</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/critique.html">Critique</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container align-self-center">
+      <div class="jumbotron">
+        <h1 class="display-4" style="text-align: center">
+            Tutorial: Maze
+        </h1>
+        <p>This page serves as a refrence for the <a href='maze.html' target="_blank" rel="noopener noreferrer">maze demo</a>.</p>
+        <h4>Explanation of Parameters:</h4>
+        <p><b>Model Size:</b>Number of nodes in the hidden layer of the recurrent neural network that each agent represents. The more nodes, the more complex the model is.</p>
+        <p><b># of Generations:</b> Number of generations used to train the maze-solving algorithm. Since this problem is simple, this number is low, and most successuful algorithms solving this problem
+        will succeed within 20 generations.</p>
+        <p><b>Population Size:</b> The number of agents in the population.</p>
+        <p><b>Selection Proportion:</b> Proportion of the fittest agents that are chosen for selection.</p>
+        <p><b>Mutation Probability:</b> The probability that any given piece of information of an agent is mutated during crossover.</p>
+        <p><b>Mutation Factor</b> When a gene is mutated, the difference the mutation makes is determined by the mutation factor. The higher the mutation factor, the more difference a mutation makes.</p>
+       <h4>Explanation of Performance Metrics</h4>
+       <p><b>Maximum Fitness of Each Generation:</b> This value ranges from 0 to 3. The maximum fitness of all agents of each generation. The fitness is dependent on the amount of moves 
+    taken to reach the goal, the final distance from the goal, and wether or not the agent survived. The higher this value, the better.</p>
+    <p><b>Proportion of Surviving Agents of Each Generation:</b> The proportion of agents that survived, ranging from 0 to 1. The higher this value, the better.</p>
+    <p><b>Minimum Distance From Goal of Each Generation:</b> The minimum distance from the goal at the end of the generation out of all agents. A value of zero means at least one agent reached the goal.
+    The lower this value, the better.</p>
+    <p><b>Moves Taken to Reach Goal or Die of Each Generation:</b> The amount of moves made by the agent who made the least moves. The maximum amount of moves allowed is 30. The minimum amount
+    of moves it takes to ge to the goal is 18. The lower this value, the better.</p>
+        <h4>Analysis of Presets:</h4>
+       <p><b>Standard:</b> This preset is nothing special as it uses standard parameters to optimize this maze solving algorithm. By generation 5, the agent is able to solve this maze. The fitness 
+    peaks at generation 4 but levels off at generation 5 and onwards. This is most likely due to some agents not being perfectly optimized. The proportion of agents that survive steadily increases over time, 
+but not to the point we would want it to (only twenty percent of agents survive by the last generation). Some agents make it to the goal by generation 2, but do not take the optimal path. The best agent
+finds the optimal path by generation 5.</p>
+<p><b>Better:</b> This preset is the same as the standard exept the model is more than twice as complex (50 nodes compared to 20). This should mean that the model is smarter and should be better and more robust. The model converges on a solution pretty quickly, and has generations where
+an agent reaches perfect fitness (3). By generation 8, almost all the agents in the population survive. A more complex model yeilds more successful agents.</p>
+<p><b>Low Population:</b> This preset reduces the population size from 100 to 20, meaning the genetic algorithm has less chances to find the correct solution. As you can see in the maze, the 
+model fails to solve it. However, the model reaches maximum fitness by generation 10, and all the agents survive. This is due to the agents just learning to stay in one place the entire time,
+evident by their distances to the goal and amount of moves taken. Although the algorithm "optimizes" the fitness function, it does not accomplish our goal, showing why a large population is important.</p>
+<p><b>High Mutation:</b> This preset has increased the probability of mutation and the level of mutation. In this preset, the agents sometimes solve the maze, but sometimes don't. The fitness graph is 
+erratic, and barely any agents survive. Some agents reach the goal, but they don't always take the most optimal path. While this algorithm may be able to solve the maze in any given generation, the solution
+will be obfuscated out of existance due to the high mutation rate. While mutation can be helpful in preventing premature convergence, too much mutation will ultimately ruin our results.</p>
+    </div>
+
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

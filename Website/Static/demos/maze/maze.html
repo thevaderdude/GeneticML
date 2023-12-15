@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Genetic ML</title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/index.html">GeneticML</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/info.html">Information</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/demos/demos.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Demos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/demos/demos.html">Demos:</a>
+                <a class="dropdown-item" href="/demos/6_bits/6bits.html">6-bits</a>
+                <a class="dropdown-item" href="/demos/maze/maze.html">Maze</a>
+                
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/links.html">Further Reading</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/critique.html">Critique</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container align-self-center">
+      <div class="jumbotron">
+        <h1 class="display-4" style="text-align: center">Demo: Maze</h1>
+        <p> This demo is meant to show a genetic machine learning algorithm in action by training it to solve a simple maze. The agent (represented by a blue dot) must go from the green square to the
+            red square without hitting any barriers. There are multiple presets of parameters for the genetic algorithm so you can see how the parameters affect the results. Below is the maze in question, which will display the best agent of each generation attempting to solve the maze. Below that are graphs of performance metrics of the genetic algorithm.
+          Refer to the <a href='tutorial.html' target="_blank" rel="noopener noreferrer">tutorials</a> page for more information on the results of each preset. The parameters corresponding to each preset are as follows:
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Preset</th>
+              <th scope="col">Model Size</th>
+              <th scope="col"># of Generations</th>
+              <th scope="col">Population Size</th>
+              <th scope="col">Selection Proportion</th>
+              <th scope="col">Mutation Probability</th>
+              <th scope="col">Mutation Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Standard</th>
+              <td>20</td>
+              <td>20</td>
+              <td>100</td>
+              <td>0.3</td>
+              <td>0.01</td>
+              <td>0.3</td>
+            </tr>
+            <tr>
+              <th scope="row">Better</th>
+              <td>50</td>
+              <td>20</td>
+              <td>100</td>
+              <td>0.3</td>
+              <td>0.01</td>
+              <td>0.3</td>
+            </tr>
+            <tr>
+              <th scope="row">Low Population</th>
+              <td>20</td>
+              <td>20</td>
+              <td>20</td>
+              <td>0.3</td>
+              <td>0.01</td>
+              <td>0.3</td>
+            </tr>
+            <tr>
+              <th scope="row">High Mutation</th>
+              <td>20</td>
+              <td>20</td>
+              <td>100</td>
+              <td>0.3</td>
+              <td>0.3</td>
+              <td>0.7</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 style="text-align: center;">Preset Selections:</h4>
+        <div id='buttons' class="container align-self-center">
+          <button type="button" id='preset1' class="btn btn-outline-primary" onclick="preset1('standard')">Standard</button>
+          <button type="button" id='preset2' class="btn btn-outline-primary" onclick="preset1('better')">Better</button>
+          <button type="button" id='preset3' class="btn btn-outline-primary" onclick="preset1('low_pop')">Low Population</button>
+          <button type="button" id='preset4' class="btn btn-outline-primary" onclick="preset1('mut')">High Mutation</button>
+        </div>
+        
+        <br>
+        <br>
+        <div>
+            <h4>The Maze:</h4>
+            <p>Generation: <a id='gen'></a></p>
+            <canvas id="maze" width='600' height='600'></canvas>
+            <br>
+            <h4>Performance Metrics:</h4>
+            <canvas id="fit_graph" width='300' style='display:inline-block'></canvas><canvas id="alive_graph" width='300' style='display:inline-block'></canvas>
+        <br>
+        <canvas id="dist_graph" width='300'></canvas><canvas id="moves_graph" width='300'></canvas>
+ 
+
+          <br>
+         
+
+          
+        </div>
+        
+      </div> 
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js" integrity="sha256-cHVO4dqZfamRhWD7s4iXyaXWVK10odD+qp4xidFzqTI=" crossorigin="anonymous"></script>
+    <script src='maze.js'></script>
+  </body>
+</html>

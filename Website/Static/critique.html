@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Genetic ML</title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">GeneticML</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="info.html">Information</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="demos/demos.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Demos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="demos/demos.html">Demos:</a>
+              <a class="dropdown-item" href="demos/6_bits/6bits.html">6-bits</a>
+              <a class="dropdown-item" href="demos/maze/maze.html">Maze</a>
+              
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="links.html">Further Reading</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="critique.html">Critique</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container align-self-center">
+      <div class="jumbotron">
+        <h1 class="display-4" style="text-align: center">
+            Critique
+        </h1>
+        <a href='https://www.youtube.com/watch?v=K-wIZuAA3EY' target="_blank" rel="noopener noreferrer">Code Bullet - A.I. Learns To Walk</a>
+        <p>
+        This video demonstrates the use of a genetic machine learning algorithm (specifically NEAT) to create a simple figure that can walk. The creator of this video, Code Bullet, publishes artificial intelligence videos for the purpose of entertainment and education. His videos primarily consist of creating machine learning algorithms that learn how to play games, such as Snake, 2048, and Pong. Although the primary purpose of this particular video is entertainment, it still contains a central argument that is worthy of analysis and critique.
+
+        </p>
+        <p>
+        This video illustrates Code Bullet’s process of developing an algorithm that is able to control a 2-dimensional human-like figure and make it walk at a reasonable speed. Bullet is arguing that his approach is a valid simulation of a real creature learning to walk. While his approach is extremely similar to that of real evolution, there are a few pitfalls of the approach that distance itself from actual evolution. Ultimately, however, this video is an amazing and entertaining demonstration of the real processes and considerations that are required for creating a successful genetic algorithm.
+
+        </p>
+        <p>Code Bullet’s credibility on the subject of AI is established by his extremely successful youtube channel creating machine learning algorithms to play games. In all of his videos, he demonstrates his extensive knowledge of artificial intelligence, machine learning, software, and game theory. Since this video is meant for entertainment and his audience is likely young, nerdy youtube users, his casual and vulgar diction is not a problem, but certainly does not help his credibility from an academic standpoint. 
+        </p>
+        <p>Bullet begins the video by showcasing Evolution, a game that allows the player to create creatures with bones and muscles. These creatures are then put to the test by training them to walk via a simple genetic algorithm. Bullet wants to do something similar, but does not like the limiting factors of creature creation and would like to have the creatures be composed of connected 2-dimensional shapes that can rotate their vertices to create movement. The bones and muscles approach is the most analogous to real movement, while Bullet’s approach is dissimilar. Although Bullet’s approach is easier to apply a genetic algorithm to, it distances his approach from real biology. Additionally, the fact that creatures have a fixed structure is not analogous to real evolution. If the creatures were to evolve their structure over time, this would be more analogous to biology. Bullet also uses the game Evolution’s simple genetic algorithm as support for his decision to not use the game’s approach. This is valid as the Bullet’s genetic algorithm of choice (NEAT) is most similar to actual biological evolution. Another issue with Bullet’s approach is the fact that the joint angles are not limited, meaning that the creature can move its legs in unnatural ways. While the angles are not limited for the purpose of entertainment, it makes this demonstration more dissimilar to biology. Limiting the joint movements to natural movements would also make the creature more performant as well.
+        </p>
+        <p>This video is very effective at demonstrating the considerations that need to be made when applying genetic machine learning. The thought process behind the inputs of the neural network are adequately justified, although I suspect more inputs would improve the performance of Bullet’s algorithm. Requiring the agents to move at a certain speed to survive is a good way to prevent premature convergence (a common occurrence in genetic machine learning). Additional explanation of the structure of Bullet’s NEAT algorithm (model structure, genetic algorithm parameters, fitness function) would demonstrate Bullet’s expertise on this subject and further improve the credibility of his argument.
+        </p>
+        <p>Bullet’s video is a fun, entertaining example of a genetic algorithm in action, but takes avoidable shortcuts for entertainment and ease of development that ultimately weaken his approaches similarity to real biological evolution.
+        </p>
+      </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
